@@ -1,20 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int global = 100; // Initialized Global Variable
-int global2;      // Uninitialized Global Variable
+int global = 100; // Data Segment
+int global2;      // BSS Segment
 
 int main(void)
 {
-    int local = 10; // Local Variable (Stack)
+    int local = 10;                 // Stack
+    int *ptr = malloc(sizeof(int)); // Heap
 
-    int *ptr = malloc(sizeof(int)); // Heap Memory
+    if (ptr == NULL)
+    {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
     *ptr = 50;
 
-    printf("Global      : %p\n", (void *)&global);
-    printf("Global2     : %p\n", (void *)&global2);
-    printf("Local       : %p\n", (void *)&local);
-    printf("Pointer     : %p\n", (void *)&ptr);
+    printf("Memory Layout of a C Program\n");
+    printf("---------------------------\n\n");
+
+    printf("Global Initialized : %p\n", (void *)&global);
+    printf("Global Uninitialized : %p\n", (void *)&global2);
+    printf("Local Variable : %p\n", (void *)&local);
+    printf("Pointer Variable : %p\n", (void *)&ptr);
     printf("Heap Memory : %p\n", (void *)ptr);
 
     free(ptr);
