@@ -1,0 +1,13 @@
+# Build Files
+build/
+*.exe
+*.out
+*.o
+*.obj
+
+# VS Code
+.vscode/*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
