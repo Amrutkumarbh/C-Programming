@@ -25,6 +25,7 @@ int main(void)
     printf("Local Variable : %p\n", (void *)&local);
     printf("Pointer Variable : %p\n", (void *)&ptr);
     printf("Heap Memory : %p\n", (void *)ptr);
+    printf("Value at Heap Memory : %d\n", *(int *)ptr);
 
     free(ptr);
 
